@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontend Mentor | News Homepage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              softOrange: 'hsl(35, 77%, 62%)',
+              softRed: 'hsl(5, 85%, 63%)',
+              offWhite: 'hsl(36, 100%, 99%)',
+              grayishBlue: 'hsl(233, 8%, 79%)',
+              darkGrayishBlue: 'hsl(236, 13%, 42%)',
+              veryDarkBlue: 'hsl(240, 100%, 5%)',
+            },
+            fontFamily: {
+              inter: ['Inter', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      .mobile-menu {
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+      }
+      .mobile-menu.open {
+        transform: translateX(0);
+      }
+      .menu-overlay {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease-in-out;
+      }
+      .menu-overlay.open {
+        opacity: 1;
+        visibility: visible;
+      }
+    </style>
+  </head>
+  <body class="bg-offWhite text-veryDarkBlue p-6 md:p-10 lg:p-16 font-inter max-w-7xl mx-auto">
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay fixed inset-0 bg-veryDarkBlue/50 z-20 md:hidden" id="menuOverlay"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu fixed top-0 right-0 w-2/3 h-full bg-offWhite p-8 z-30 md:hidden" id="mobileMenu">
+      <button class="ml-auto block mb-16" id="closeMenuBtn">
+        <img src="./assets/images/icon-menu-close.svg" alt="Close menu" />
+      </button>
+      <nav>
+        <ul class="space-y-6 text-lg">
+          <li><a href="#" class="hover:text-softRed transition">Home</a></li>
+          <li><a href="#" class="hover:text-softRed transition">New</a></li>
+          <li><a href="#" class="hover:text-softRed transition">Popular</a></li>
+          <li><a href="#" class="hover:text-softRed transition">Trending</a></li>
+          <li><a href="#" class="hover:text-softRed transition">Categories</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Navbar -->
+    <header class="flex justify-between items-center mb-12 md:mb-20">
+      <h1 class="text-4xl font-extrabold">W.</h1>
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:block">
+        <ul class="flex space-x-8 text-darkGrayishBlue">
+          <li><a href="#" class="hover:text-softRed transition">Home</a></li>
+          <li><a href="#" class="hover:text-softRed transition">New</a></li>
+          <li><a href="#" class="hover:text-softRed transition">Popular</a></li>
+          <li><a href="#" class="hover:text-softRed transition">Trending</a></li>
+          <li><a href="#" class="hover:text-softRed transition">Categories</a></li>
+        </ul>
+      </nav>
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden" id="openMenuBtn">
+        <img src="./assets/images/icon-menu.svg" alt="Open menu" />
+      </button>
+    </header>
+
+    <!-- Main Grid -->
+    <main class="grid md:grid-cols-3 gap-8">
+      <!-- Left Column (Hero) -->
+      <section class="md:col-span-2 space-y-6">
+        <picture>
+          <source media="(min-width: 768px)" srcset="./assets/images/image-web-3-desktop.jpg" />
+          <source media="(max-width: 767px)" srcset="./assets/images/image-web-3-mobile.jpg" />
+          <img src="./assets/images/image-web-3-desktop.jpg" alt="Web 3 graphic" class="w-full h-auto" />
+        </picture>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
+            The Bright Future of Web 3.0?
+          </h2>
+          <div class="flex flex-col justify-between space-y-6">
+            <p class="text-darkGrayishBlue text-lg">
+              We dive into the next evolution of the web that claims to put the power of the platforms back into the hands of the people. But is it really fulfilling its promise?
+            </p>
+            <button class="uppercase bg-softRed text-offWhite w-fit px-8 py-3 tracking-widest text-sm font-bold hover:bg-veryDarkBlue transition">
+              Read more
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sidebar -->
+      <aside class="bg-veryDarkBlue text-offWhite p-6 space-y-8">
+        <h3 class="text-softOrange text-3xl font-bold">New</h3>
+
+        <div class="space-y-2 border-b border-gray-600 pb-6">
+          <h4 class="font-bold text-xl hover:text-softOrange cursor-pointer transition">Hydrogen VS Electric Cars</h4>
+          <p class="text-grayishBlue">Will hydrogen-fueled cars ever catch up to EVs?</p>
+        </div>
+
+        <div class="space-y-2 border-b border-gray-600 pb-6">
+          <h4 class="font-bold text-xl hover:text-softOrange cursor-pointer transition">The Downsides of AI Artistry</h4>
+          <p class="text-grayishBlue">What are the possible adverse effects of on-demand AI image generation?</p>
+        </div>
+
+        <div class="space-y-2">
+          <h4 class="font-bold text-xl hover:text-softOrange cursor-pointer transition">Is VC Funding Drying Up?</h4>
+          <p class="text-grayishBlue">Private funding by VC firms is down 50% YOY. We take a look at what that means.</p>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Bottom Articles -->
+    <section class="grid md:grid-cols-3 gap-6 mt-16">
+      <div class="flex space-x-4">
+        <img src="./assets/images/image-retro-pcs.jpg" class="w-24 h-32 object-cover" alt="Retro PCs" />
+        <div>
+          <p class="text-grayishBlue font-bold text-3xl">01</p>
+          <h5 class="font-bold text-lg hover:text-softRed cursor-pointer mt-1 mb-2 transition">Reviving Retro PCs</h5>
+          <p class="text-darkGrayishBlue text-sm">What happens when old PCs are given modern upgrades?</p>
+        </div>
+      </div>
+
+      <div class="flex space-x-4">
+        <img src="./assets/images/image-top-laptops.jpg" class="w-24 h-32 object-cover" alt="Top Laptops" />
+        <div>
+          <p class="text-grayishBlue font-bold text-3xl">02</p>
+          <h5 class="font-bold text-lg hover:text-softRed cursor-pointer mt-1 mb-2 transition">Top 10 Laptops of 2022</h5>
+          <p class="text-darkGrayishBlue text-sm">Our best picks for various needs and budgets.</p>
+        </div>
+      </div>
+
+      <div class="flex space-x-4">
+        <img src="./assets/images/image-gaming-growth.jpg" class="w-24 h-32 object-cover" alt="Gaming Growth" />
+        <div>
+          <p class="text-grayishBlue font-bold text-3xl">03</p>
+          <h5 class="font-bold text-lg hover:text-softRed cursor-pointer mt-1 mb-2 transition">The Growth of Gaming</h5>
+          <p class="text-darkGrayishBlue text-sm">How the pandemic has sparked fresh opportunities.</p>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const openMenuBtn = document.getElementById('openMenuBtn');
+      const closeMenuBtn = document.getElementById('closeMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const menuOverlay = document.getElementById('menuOverlay');
+
+      openMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.add('open');
+        menuOverlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+
+      closeMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        menuOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+
+      menuOverlay.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        menuOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    </script>
+  </body>
+</html>
